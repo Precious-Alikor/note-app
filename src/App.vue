@@ -41,7 +41,6 @@ const deleteNote = (id) => {
         <div class="card" v-for="note in notes" :key="note.id">
           <p class="main-text">{{ note.text }}</p>
           <p class="date">{{ note.date }}</p>
-          <p class="date">{{ note.id }}</p>
           <i class="fa-solid fa-trash delete" @click="deleteNote(note.id)"></i>
         </div>
       </div>
