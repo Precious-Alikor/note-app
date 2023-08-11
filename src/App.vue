@@ -52,8 +52,8 @@ const deleteNote = (id) => {
 main {
   font-family: 'Poppins', sans-serif;
   background-color: rgba(202, 202, 210, 0.276);
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 
 .container {
