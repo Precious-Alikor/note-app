@@ -54,10 +54,13 @@ main {
   background-color: rgba(202, 202, 210, 0.276);
   height: 100vh;
   width: 100vw;
-  padding-top: 40px;
 }
 
 .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgba(235, 201, 52, 0.976);
   padding: 20px 20px 30px 20px;
   border-radius: 10px;
