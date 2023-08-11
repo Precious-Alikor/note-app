@@ -40,8 +40,8 @@ const deleteNote = (id) => {
       <div class="card-container my-4">
         <div class="card py-2" v-for="note in notes" :key="note.id">
           <p class="main-text flex flex-wrap">{{ note.text }}</p>
-          <p class="date mx-3">{{ note.date }}</p>
-          <i class="fa-solid fa-trash delete mx-3" @click="deleteNote(note.id)"></i>
+          <p class="date ms-3">{{ note.date }}</p>
+          <i class="fa-solid fa-trash delete ms-3 me-1" @click="deleteNote(note.id)"></i>
         </div>
       </div>
     </div>
