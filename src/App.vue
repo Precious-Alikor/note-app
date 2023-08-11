@@ -28,7 +28,7 @@ const deleteNote = (id) => {
 
 <template>
   <main>
-    <div class="container">
+    <div class="container w-5/6 md:w-5/12 lg:w-4/12">
       <header>
         <h1>Notes</h1>
       </header>
@@ -37,11 +37,11 @@ const deleteNote = (id) => {
         <button @click="addNote">+</button>
       </div>
       <p v-if="errorMessage" class="errorMessage">{{ errorMessage }}</p>
-      <div class="card-container">
-        <div class="card" v-for="note in notes" :key="note.id">
-          <p class="main-text">{{ note.text }}</p>
-          <p class="date">{{ note.date }}</p>
-          <i class="fa-solid fa-trash delete" @click="deleteNote(note.id)"></i>
+      <div class="card-container my-4">
+        <div class="card py-2" v-for="note in notes" :key="note.id">
+          <p class="main-text flex flex-wrap">{{ note.text }}</p>
+          <p class="date mx-3">{{ note.date }}</p>
+          <i class="fa-solid fa-trash delete mx-3" @click="deleteNote(note.id)"></i>
         </div>
       </div>
     </div>
@@ -50,89 +50,81 @@ const deleteNote = (id) => {
 
 <style scoped>
 main {
+  font-family: 'Poppins', sans-serif;
+  background-color: rgba(202, 202, 210, 0.276);
   height: 100vh;
   width: 100vw;
+  padding-top: 40px;
 }
 
 .container {
-  max-width: 1000px;
-  padding: 10px;
-  margin: 0 auto;
+  background-color: rgba(235, 201, 52, 0.976);
+  padding: 20px 20px 30px 20px;
+  border-radius: 10px;
+  margin: auto;
+  border: 2px solid black;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
 }
 
-h1 {
-  font-weight: bold;
-  margin-bottom: 25px;
+header h1 {
   font-size: 50px;
 }
 
 .input {
-  width: 600px;
+  border: 1px solid black;
   height: 40px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
 }
 
 input {
-  width: 90%;
-  height: 90%;
-  border-radius: 5px;
+  width: 95%;
+  height: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   border: none;
   outline: none;
   padding-left: 10px;
+  font-size: 14px;
 }
 
 .input button {
   border: none;
-  padding: 10px;
-  width: 40px;
-  height: 40px;
+  width: 39px;
+  height: 39px;
   background-color: rgb(21, 20, 20);
-  /* border-radius: 100%; */
   color: white;
   font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-
 .card-container {
-  width: 600px;
-  height: 500px;
-  box-shadow: 1px 1px 8px #eeeeee;
-  border-radius: 20px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  height: 350px;
+  overflow: scroll;
 }
 
 .card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  border-bottom: 1px solid rgb(228, 228, 228);
-  margin: 0 30px;
+  border-bottom: 1px solid rgb(38, 38, 38);
+  border-radius: 3px;
+  margin-right: 20px;
 }
 
 .card p {
-  font-size: 14px;
+  font-size: 13px;
 }
-
-.errorMessage {
-  color: red;
-  text-align: center;
-}
-
-.delete {
+.delete{
   cursor: pointer;
 }
+
 </style>
