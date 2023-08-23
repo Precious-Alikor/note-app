@@ -111,7 +111,7 @@ input {
 
 .card-container {
   height: 350px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .card {
