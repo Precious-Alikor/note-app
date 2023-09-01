@@ -12,8 +12,7 @@ const addNote = () => {
   notes.value.push({
     id: Math.floor(Math.random() * 20),
     text: newNote.value,
-    date: new Date().toLocaleDateString('en-US'),
-    backgroundColor: randomColor(),
+    date: new Date().toLocaleDateString('en-US')
   })
   newNote.value = "";
   errorMessage.value = ""
@@ -25,15 +24,11 @@ const deleteNote = (id) => {
     notes.value.splice(index, 1)
   }
 }
-
-const randomColor = () => {
-  return "hsl(" + Math.random() * 360 + ", 100%, 75%)";
-}
 </script>
 
 <template>
   <main>
-    <div class="container">
+    <div class="container w-5/6 md:w-5/12 lg:w-4/12">
       <header>
         <h1>Notes</h1>
       </header>
@@ -41,17 +36,12 @@ const randomColor = () => {
         <input type="text" v-model.trim="newNote" placeholder="Enter a note">
         <button @click="addNote">+</button>
       </div>
-      <p v-if="errorMessage" class="errorMessage mt-2">{{ errorMessage }}</p>
-      <div class="card-container grid lg:grid-cols-4 gap-x-8 pb-10">
+      <p v-if="errorMessage" class="errorMessage">{{ errorMessage }}</p>
+      <div class="card-container my-4">
         <div class="card py-2" v-for="note in notes" :key="note.id">
-          <div class="notes rounded p-4" :style="{ backgroundColor: note.backgroundColor }">
-            <div class="flex justify-between">
-              <p class="main-text flex flex-wrap break-all w-10/12">{{ note.text }}</p>
-              <i class="fa-solid fa-trash delete" @click="deleteNote(note.id)"></i>
-            </div>
-            <p class="date mt-3">{{ note.date }}</p>
-
-          </div>
+          <p class="main-text flex flex-wrap">{{ note.text }}</p>
+          <p class="date ms-3">{{ note.date }}</p>
+          <i class="fa-solid fa-trash delete ms-3 me-1" @click="deleteNote(note.id)"></i>
         </div>
       </div>
     </div>
@@ -61,19 +51,25 @@ const randomColor = () => {
 <style scoped>
 main {
   font-family: 'Poppins', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(202, 202, 210, 0.276);
+  height: 100%;
+  width: 100%;
 }
 
 .container {
-  width: 80%;
-  height: 80vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(235, 201, 52, 0.976);
+  padding: 20px 20px 30px 20px;
+  border-radius: 10px;
+  margin: auto;
+  border: 2px solid black;
 }
 
 header {
   text-align: center;
-  margin-top: 20px;
 }
 
 header h1 {
@@ -113,17 +109,25 @@ input {
   border-bottom-right-radius: 5px;
 }
 
-.notes {
-  margin-top: 30px;
-  /* height: 180px; */
-  color: black;
+.card-container {
+  height: 350px;
+  overflow-y: scroll;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(38, 38, 38);
+  border-radius: 3px;
+  margin-right: 20px;
 }
 
 .card p {
   font-size: 13px;
 }
-
-.delete {
+.delete{
   cursor: pointer;
 }
+
 </style>
